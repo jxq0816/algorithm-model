@@ -1,10 +1,7 @@
 # coding=utf-8
 from textrank4zh import TextRank4Keyword, TextRank4Sentence
-import jieba.analyse
-from snownlp import SnowNLP
 import pandas as pd
 import numpy as np
-
 
 # 关键词抽取
 def keywords_extraction(text):
@@ -52,10 +49,6 @@ def keysentences_extraction(text):
     keysentences = tr4s.get_key_sentences(num=3, sentence_min_len=6)
     return keysentences
 
-
-def keywords_textrank(text):
-    keywords = jieba.analyse.textrank(text, topK=6)
-    return keywords
 
 
 if __name__ == "__main__":
