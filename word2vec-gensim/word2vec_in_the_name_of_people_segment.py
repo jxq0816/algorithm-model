@@ -56,3 +56,4 @@ for key in model.wv.similar_by_word('沙瑞金', topn=100):
         print(key[0], key[1])
         if req_count == 0:
             break;
+print(model.wv['沙瑞金'])
