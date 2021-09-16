@@ -1,7 +1,7 @@
 import xgboost as xgb
 # read in data
-dtrain = xgb.DMatrix('/Users/jiangxingqi/AI/xgboost/demo/data/agaricus.txt.train')
-dtest = xgb.DMatrix('/Users/jiangxingqi/AI/xgboost/demo/data/agaricus.txt.test')
+dtrain = xgb.DMatrix('agaricus.txt.train')
+dtest = xgb.DMatrix('agaricus.txt.test')
 # specify parameters via map
 param = {'max_depth':2, 'eta':1, 'silent':0, 'objective':'binary:logistic' }
 num_round = 2
