@@ -5,7 +5,6 @@
 #transform(y) ：将y转变成索引值。
 
 from sklearn import preprocessing
-
 le = preprocessing.LabelEncoder()
 le.fit(["paris", "paris", "tokyo", "amsterdam"])
 print(le.classes_)

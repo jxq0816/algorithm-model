@@ -21,6 +21,11 @@ print (y_train.shape)
 print (X_test.shape)
 print (y_test.shape)
 
+#LabelEncoder是用来对分类型特征值进行编码，即对不连续的数值或文本进行编码。其中包含以下常用方法：
+#fit(y) ：fit可看做一本空字典，y可看作要塞到字典中的词。
+#fit_transform(y)：相当于先进行fit再进行transform，即把y塞到字典中去以后再进行transform得到索引值。
+#transform(y) ：将y转变成索引值。
+
 le_x=preprocessing.LabelEncoder()
 le_x.fit(np.unique(X_train))
 X_train=X_train.apply(le_x.transform)
