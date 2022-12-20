@@ -29,8 +29,15 @@ le_x.fit(np.unique(X_test))
 X_test=X_test.apply(le_x.transform)
 
 #XGBoost 使用sklearn wrapper，使用sklearn风格的参数(推荐)
-sklearn_model_new = xgb.XGBClassifier(max_depth=5,learning_rate= 0.5, verbosity=1, objective='binary:logistic',random_state=1)
-sklearn_model_new.fit(X_train, y_train, early_stopping_rounds=10, eval_metric="error",eval_set=[(X_test, y_test)])
+sklearn_model_new = xgb.XGBClassifier(
+    max_depth=5,
+    learning_rate=0.5,
+    verbosity=1,
+    eval_metric='error',
+    objective='binary:logistic',
+    random_state=1
+)
+sklearn_model_new.fit(X_train, y_train,eval_set=[(X_test, y_test)])
 #使用sklearn网格搜索调参
 #n_estimators则是非常重要的要调的参数，它关系到我们XGBoost模型的复杂度，因为它代表了我们决策树弱学习器的个数。
 #n_estimators太小，容易欠拟合，n_estimators太大，模型会过于复杂，一般需要调参选择一个适中的数值。
@@ -43,17 +50,33 @@ print(gsCv.best_params_)
 
 
 #n_estimators用于指定基础模型的数量、默认为100个。
-sklearn_model_new2 = xgb.XGBClassifier(max_depth=4,n_estimators=5,verbosity=1, objective='binary:logistic',random_state=1)
+sklearn_model_new2 = xgb.XGBClassifier(
+    max_depth=4,
+    n_estimators=5,
+    verbosity=1,
+    eval_metric='error',
+    objective='binary:logistic',
+    random_state=1
+)
 
 #learning_rate用于指定模型迭代的学习率(步长)、默认为0.1；
-gsCv2 = GridSearchCV(sklearn_model_new2,{'learning_rate ': [0.3,0.5,0.7]})
+gsCv2 = GridSearchCV(sklearn_model_new2,{'learning_rate': [0.3,0.5,0.7]})
 gsCv2.fit(X_train,y_train)
-
 print(gsCv2.best_score_)
 print(gsCv2.best_params_)
 
-sklearn_model_new3 = xgb.XGBClassifier(max_depth=4,learning_rate= 0.3, verbosity=1, objective='binary:logistic',n_estimators=10)
-sklearn_model_new3.fit(X_train, y_train, early_stopping_rounds=10, eval_metric="error",eval_set=[(X_test, y_test)])
+#early_stopping_rounds=10,代表在10个迭代内结果没什么改进就停止
+
+sklearn_model_new3 = xgb.XGBClassifier(
+    max_depth=4,
+    learning_rate=0.5,
+    verbosity=1,
+    eval_metric='error',
+    objective='binary:logistic',
+    n_estimators=10,
+    early_stopping_rounds=10
+)
+sklearn_model_new3.fit(X_train, y_train,eval_set=[(X_test, y_test)])
 
 pred_test_new = sklearn_model_new3.predict(X_test)
 
