@@ -1,4 +1,4 @@
-理论基础
+# 理论基础
 
 数据科学
 
@@ -68,7 +68,8 @@ AUC和ROC曲线的前世今生
 
 https://xingqijiang.blog.csdn.net/article/details/100045260
 
-特征工程
+# 特征工程
+
 机器学习 | 特征工程综述
 
 https://xingqijiang.blog.csdn.net/article/details/116719135
@@ -81,7 +82,8 @@ https://blog.csdn.net/jxq0816/article/details/118248647
 
 https://xingqijiang.blog.csdn.net/article/details/118261663
 
-算法模型
+# 算法模型
+
 算法与统计学习
 
 https://xingqijiang.blog.csdn.net/article/details/84108965
@@ -94,7 +96,8 @@ https://xingqijiang.blog.csdn.net/article/details/82426626
 
 https://xingqijiang.blog.csdn.net/article/details/119269535
 
-逻辑回归
+## 逻辑回归
+
 机器学习 | LR逻辑回归模型
 
 https://xingqijiang.blog.csdn.net/article/details/81607994
@@ -123,7 +126,7 @@ https://xingqijiang.blog.csdn.net/article/details/103806709
 
 https://xingqijiang.blog.csdn.net/article/details/116642184
 
-CART
+## CART
 
 机器学习 | 决策树模型
 
@@ -159,7 +162,7 @@ XGBoost类库使用小结
 
 https://xingqijiang.blog.csdn.net/article/details/103402351
 
-聚类
+## 聚类
 
 机器学习 | KNN邻近算法
 
@@ -173,7 +176,7 @@ https://xingqijiang.blog.csdn.net/article/details/79561201
 
 https://xingqijiang.blog.csdn.net/article/details/116206080
 
-其它
+## 其它
 
 机器学习 | Softmax回归模型
 

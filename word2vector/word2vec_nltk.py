@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+plt.switch_backend('agg')
 import re
 
 corpus = ['The sky is blue and beautiful.',
@@ -20,7 +21,7 @@ corpus_df = pd.DataFrame({'Document': corpus, 'category': labels})
 
 # 第二步：进行分词和停用词的去除
 import nltk
-
+#nltk.download()
 stopwords = nltk.corpus.stopwords.words('english')
 wps = nltk.WordPunctTokenizer()
 def Normalize_corpus(doc):
@@ -46,15 +47,18 @@ min_count = 1
 window = 10
 # 对出现次数频繁的词进行随机下采样操作
 sample = 1e-3
-model = word2vec.Word2Vec(corpus_token, size=feature_size, min_count=min_count, window=window, sample=sample)
-print(model.wv.index2word)
+model = word2vec.Word2Vec(corpus_token, vector_size=feature_size, min_count=min_count, window=window, sample=sample)
+#表示输出sky这个词的特征映射结果
+print(model.wv['sky'] )
+#输出经过映射后的特征名，输出经过映射词的名字
+print(model.wv.index_to_key)
 
 # 第五步：对每一个corpus做平均的word2vec特征向量
 def word2vec_corpus(corpuses, num_size=10):
 
     corpus_tokens = [wps.tokenize(corpus) for corpus in corpuses]
-    model = word2vec.Word2Vec(corpus_tokens, size=num_size, min_count=min_count, window=window, sample=sample)
-    vocabulary = model.wv.index2word
+    model = word2vec.Word2Vec(corpus_tokens, vector_size=num_size, min_count=min_count, window=window, sample=sample)
+    vocabulary = model.wv.index_to_key
     score_list = []
     for corpus_token in corpus_tokens:
         count_time = 0
@@ -68,4 +72,8 @@ def word2vec_corpus(corpuses, num_size=10):
 
     return score_list
 
-print(np.shape(word2vec_corpus(corpus_array, num_size=10)))
+score_list=word2vec_corpus(corpus_array, num_size=10)
+
+print(score_list)
+
+print(np.shape(score_list))
