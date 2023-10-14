@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # https://www.kaggle.com/akornienko123/ghouls-goblins-and-ghosts-boo
+# https://zhuanlan.zhihu.com/p/42123341?utm_id=0
 import numpy as np
 import pandas as pd
 import xgboost as xgb
@@ -13,14 +14,14 @@ import numpy as np
 from scipy.sparse import hstack
 
 #数据输入
-path = './data/train.csv'
+path = 'train.csv'
 data = pd.read_csv(path)
 
 #数据预处理
 #滤除缺失数据
 data = data.dropna()
 #删除列
-data = data.drop(['id','color'],1)
+data = data.drop(columns=['id','color'])
 
 #训练/测试数据分割
 column = data.columns
