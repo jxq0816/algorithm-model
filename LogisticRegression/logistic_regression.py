@@ -1,4 +1,5 @@
 #https://www.jianshu.com/p/3579945a7ea7
+#https://zhuanlan.zhihu.com/p/621365948?utm_id=0
 # 导入必要的几个包
 import matplotlib.pyplot as plt
 import numpy as np
@@ -16,6 +17,7 @@ x_train, x_test, y_train, y_test = train_test_split(X,Y, test_size = 0.3, random
 
 #逻辑回归模型，C=1e5表示目标函数。
 lr = LogisticRegression(C=1e5)
+#调用逻辑回归模型进行训练，参数X为数据特征，参数Y为数据类标。
 lr = lr.fit(X,Y)
 
 print("Logistic Regression模型训练集的准确率：%.3f" %lr.score(x_train, y_train))
@@ -30,6 +32,10 @@ print("Logistic Regression模型正确率：%.3f" %accuracy)
 
 # Plot the decision boundary. For that, we will assign a color to each
 # point in the mesh [x_min, x_max]x[y_min, y_max].
+# 获取鸢尾花数据集的两列数据，对应为花萼长度和花萼宽度，每个点的坐标就是(x,y)。
+# 先取X二维数组的第一列（长度）的最小值、最大值和步长h（设置为0.02）生成数组，
+# 再取X二维数组的第二列（宽度）的最小值、最大值和步长h生成数组，
+# 最后用meshgrid函数生成两个网格矩阵xx和yy，如下所示
 x1_min, x1_max = X[:, 0].min() - .5, X[:, 0].max() + .5 # 第0列的范围
 x2_min, x2_max = X[:, 1].min() - .5, X[:, 1].max() + .5 # 第1列的范围
 h = .02
