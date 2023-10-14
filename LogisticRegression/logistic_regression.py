@@ -18,7 +18,7 @@ x_train, x_test, y_train, y_test = train_test_split(X,Y, test_size = 0.3, random
 #逻辑回归模型，C=1e5表示目标函数。
 lr = LogisticRegression(C=1e5)
 #调用逻辑回归模型进行训练，参数X为数据特征，参数Y为数据类标。
-lr = lr.fit(X,Y)
+lr = lr.fit(x_train,y_train)
 
 print("Logistic Regression模型训练集的准确率：%.3f" %lr.score(x_train, y_train))
 print("Logistic Regression模型测试集的准确率：%.3f" %lr.score(x_test, y_test))
