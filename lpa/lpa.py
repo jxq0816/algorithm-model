@@ -4,8 +4,8 @@ from networkx.algorithms.community import asyn_lpa_communities as lpa
 # 空手道俱乐部
 G = nx.karate_club_graph()
 com = list(lpa(G))
+print(com)
 print('社区数量',len(com))
-#com [{0, 1, 2, 3, 7, 8, 9, 11, 12, 13, 17, 19, 21, 30},{4, 5, 6, 10, 16},{14, 15, 18, 20, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33}]
 
 # 下面是画图
 pos = nx.spring_layout(G)
