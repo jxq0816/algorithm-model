@@ -71,7 +71,5 @@ if __name__ == '__main__':
     simhash = SimHash()
     s1 = simhash.simHash('我想洗照片')
     s2 = simhash.simHash('可以洗一张照片吗')
-
     dis = simhash.getDistance(s1, s2)
-
     print('dis: {}'.format(dis))
