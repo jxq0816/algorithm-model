@@ -13,7 +13,7 @@ class SimHash(object):
 
         keyList = []
         for feature, weight in keyWords:
-            print('weight: {}'.format(weight))
+            print('feature:{},weight: {}'.format(feature,weight))
             # weight = math.ceil(weight)
             weight = int(weight)
             binstr = self.string_hash(feature)
