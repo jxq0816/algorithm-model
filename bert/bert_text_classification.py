@@ -2,12 +2,12 @@ from transformers import pipeline
 
 classifier = pipeline("text-classification",model='bhadresh-savani/bert-base-uncased-emotion', top_k=1)
 
-print(classifier("开心"))
+print('好开心',classifier("好开心"))
 
-print(classifier("happy"))
+print('He is a interesting man',classifier("He is a interesting man"))
 
-print(classifier("have a nice day"))
+print('have a nice day',classifier("have a nice day"))
 
-print(classifier("我今天很生气"))
+print('我今天很生气',classifier("我今天很生气"))
 
-print(classifier("angry"))
+print('i am sad',classifier("angry"))
