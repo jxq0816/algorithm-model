@@ -10,7 +10,7 @@ import time
 import datetime
 
 user_name = 'tdw_weijiankong'
-password = 'ra6008RAA'
+password = ''
 db = 'g_omg_pac_app'
 tb_item2vec = "shield_omg_qqcom_item2vec"
 tb_user2vec = "shield_omg_qqcom_user_feat_test"
