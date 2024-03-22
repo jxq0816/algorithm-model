@@ -21,11 +21,11 @@ class DataProcess(object):
 
         # 训练集
         train_data = df_train[['text', 'label_ft']].iloc[:195000]
-        train_data.to_csv('train.csv', index=None, header=None, sep='\t')
+        train_data.to_csv('D:\data\\tianci_news\\train.csv', index=None, header=None, sep='\t')
 
         # 挑选5000条数据作为验证集
         validate_data = df_train[['text', 'label_ft']].iloc[-5000:]
-        validate_data.to_csv('validate.csv', index=None, header=None, sep='\t')
+        validate_data.to_csv('D:\data\\tianci_news\\validate.csv', index=None, header=None, sep='\t')
 
 
 class FastTextModel(object):
@@ -34,7 +34,7 @@ class FastTextModel(object):
         pass
 
     def train(self):
-        model = fasttext.train_supervised(input='train.csv',
+        model = fasttext.train_supervised(input='D:\data\\tianci_news\\train.csv',
                                           label_prefix="__label__",
                                           epoch=30,
                                           dim=32,
@@ -51,7 +51,6 @@ class FastTextModel(object):
 
     def load_model(self):
         model = fasttext.load_model("fasttext.bin")
-
         return model
 
     # 预测验证集结果
@@ -75,7 +74,7 @@ class FastTextModel(object):
         predict_res = [y_[0].replace("__label__", "") for y_ in res[0]]
         print(predict_res)
         predict_label = pd.Series(predict_res, name="label")
-        predict_label.to_csv("predict_label.csv", index=False)
+        predict_label.to_csv("D:\data\\tianci_news\\predict_label.csv", index=False)
 
 
 if __name__ == '__main__':
